@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-navy text-white antialiased;
+}
+
+/* Anchor offset so the docked top bar (+ overflowing avatar) doesn't cover headings */
+section[id] {
+  scroll-margin-top: 6.5rem;
+}
