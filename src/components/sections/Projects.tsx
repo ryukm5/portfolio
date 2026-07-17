@@ -1,47 +1,53 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 // TODO: プロジェクト情報が届き次第、この配列を埋めてください。
 // description は言語ごとに持たせられます（ja / en）。
+// image はトップページのスクショ（public/ 配下のパス）。未指定なら preview 枠。
 // url と repo は任意です。
 type Project = {
   title: string;
   description: { ja: string; en: string };
   stack: string[];
+  image?: string;
   url?: string;
   repo?: string;
 };
 
 const PROJECTS: Project[] = [
   {
-    title: "Project One",
+    title: "CARTA ZERO",
     description: {
-      ja: "プレースホルダーの説明です。プロジェクトの内容とあなたの役割・成果に書き換えてください。",
-      en: "Placeholder description. Replace with what the project does and your role/impact.",
+      ja: "統合マーケティング企業のコーポレートサイト。3D表現とアニメーションを取り入れたブランディング重視の実装を担当しました。",
+      en: "Corporate site for an integrated-marketing firm. Handled a branding-focused build with 3D visuals and motion.",
     },
-    stack: ["Next.js", "TypeScript", "PostgreSQL"],
-    url: undefined,
+    stack: ["Next.js", "TypeScript", "WebGL"],
+    image: "/projects/cartazero.png",
+    url: "https://www.cartazero.co.jp/ja",
     repo: undefined,
   },
   {
-    title: "Project Two",
+    title: "株式会社 丸運",
     description: {
-      ja: "プレースホルダーの説明です。プロジェクトの内容とあなたの役割・成果に書き換えてください。",
-      en: "Placeholder description. Replace with what the project does and your role/impact.",
+      ja: "創業130年以上の総合物流会社のコーポレートサイト。多言語対応とIR・採用など多階層の情報設計を担当しました。",
+      en: "Corporate site for a 130-year-old logistics company. Handled multilingual support and multi-layered IR/recruit information architecture.",
     },
-    stack: ["React", "Node.js"],
-    url: undefined,
+    stack: ["WordPress", "PHP", "JavaScript"],
+    image: "/projects/maruwn.png",
+    url: "https://www.maruwn.co.jp/",
     repo: undefined,
   },
   {
-    title: "Project Three",
+    title: "ARLUIS WEDDING 採用サイト",
     description: {
-      ja: "プレースホルダーの説明です。プロジェクトの内容とあなたの役割・成果に書き換えてください。",
-      en: "Placeholder description. Replace with what the project does and your role/impact.",
+      ja: "ブライダル企業の採用サイト。動画ヒーローとスクロール演出で世界観を伝える表現面の実装を担当しました。",
+      en: "Recruit site for a bridal company. Handled the expressive front-end with a video hero and scroll-driven storytelling.",
     },
-    stack: ["Python", "FastAPI"],
-    url: undefined,
+    stack: ["JavaScript", "GSAP", "HTML/CSS"],
+    image: "/projects/arluis.png",
+    url: "https://recruit.arluis-wedding.com/",
     repo: undefined,
   },
 ];
@@ -57,15 +63,39 @@ export default function Projects() {
         </p>
         <h2 className="text-2xl font-bold text-white sm:text-3xl">{t.projects.title}</h2>
 
+        {/* バナー画像（リストの前）。明るすぎないよう半透明に。 */}
+        <div className="mt-8 overflow-hidden rounded-xl border border-white/10">
+          <Image
+            src="/banner.png"
+            alt=""
+            width={1672}
+            height={941}
+            className="h-auto w-full opacity-60"
+            priority
+          />
+        </div>
+
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project) => (
             <article
               key={project.title}
               className="flex flex-col rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
             >
-              {/* Placeholder for a screenshot / device mockup */}
-              <div className="mb-5 flex aspect-video items-center justify-center rounded-lg bg-white/5 font-mono text-xs text-white/40">
-                {t.projects.preview}
+              {/* トップページのスクショ。未指定なら preview 枠。 */}
+              <div className="mb-5 aspect-video overflow-hidden rounded-lg bg-white/5">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={640}
+                    height={360}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center font-mono text-xs text-white/40">
+                    {t.projects.preview}
+                  </div>
+                )}
               </div>
 
               <h3 className="text-lg font-semibold text-white">

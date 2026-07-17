@@ -29,13 +29,13 @@ export default function About() {
                 <li key={icon.name} className="flex flex-col items-center gap-1.5">
                   <span
                     title={icon.name}
-                    className="group flex aspect-square w-full items-center justify-center rounded-lg border border-white/15 bg-white/[0.03] p-2.5 transition-all duration-200 hover:scale-125 hover:border-white/50 hover:bg-white/10 hover:shadow-lg"
+                    className="group flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-white/[0.03] p-1.5 transition-colors duration-200 hover:border-white/50 hover:bg-white/10"
                   >
                     <svg
                       viewBox="0 0 24 24"
                       fill={icon.color}
                       aria-hidden
-                      className="h-6 w-6 transition-all duration-200 group-hover:brightness-150"
+                      className="h-9 w-9 transition-transform duration-200 group-hover:scale-125"
                     >
                       <path d={icon.path} />
                     </svg>

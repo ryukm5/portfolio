@@ -43,12 +43,12 @@ export default function Navbar() {
           </ul>
         )}
 
-        {/* トップバー本体：両端が半円のカプセル形状。枠線は明るめの半透明白。 */}
-        <div className="relative rounded-full border border-white/40 bg-navy-bar/[.19] shadow-lg backdrop-blur">
-          {/* 中央の円形アバター（上へはみ出す） */}
+        {/* トップバー本体：両端が半円のカプセル形状。枠線は白。 */}
+        <div className="relative rounded-full border border-white bg-navy-bar/[.19] shadow-lg backdrop-blur">
+          {/* 中央の円形アバター（上へはみ出す）。縁の色はバーの線に合わせて白。 */}
           <div className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/3">
             <a href="#top" className="pointer-events-auto block">
-              <span className="block overflow-hidden rounded-full border-4 border-navy-bar/[.19] bg-navy-bar shadow-lg">
+              <span className="block overflow-hidden rounded-full border-4 border-white bg-navy-bar shadow-lg">
                 <Image
                   src="/avatar.png"
                   alt="Avatar"
