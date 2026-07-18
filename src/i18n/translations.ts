@@ -33,6 +33,8 @@ export type Translation = {
     preview: string;
     live: string;
     code: string;
+    viewMore: string;
+    viewLess: string;
   };
   experience: {
     eyebrow: string;
@@ -91,6 +93,8 @@ export const translations: Record<Language, Translation> = {
       preview: "プレビュー",
       live: "サイト →",
       code: "コード →",
+      viewMore: "もっと見る",
+      viewLess: "閉じる",
     },
     // Experience
     experience: {
@@ -152,6 +156,8 @@ export const translations: Record<Language, Translation> = {
       preview: "preview",
       live: "Live →",
       code: "Code →",
+      viewMore: "View More",
+      viewLess: "Show Less",
     },
     // Experience
     experience: {
