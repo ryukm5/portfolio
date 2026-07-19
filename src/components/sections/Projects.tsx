@@ -121,17 +121,6 @@ const PROJECTS: Project[] = [
     repo: undefined,
   },
   {
-    title: "SUBU「YO〜KAIの館」",
-    description: {
-      ja: "アパレルブランドのポップアップイベント特設サイト。浮世絵風のビジュアルとスクロール演出で世界観を表現する実装を担当しました。",
-      en: "Special site for an apparel brand's pop-up event. Handled an immersive build with ukiyo-e-style visuals and scroll-driven storytelling.",
-    },
-    stack: ["Next.js", "TypeScript", "GSAP"],
-    image: "/projects/subu.png",
-    url: "https://subu2016-10th.com/",
-    repo: undefined,
-  },
-  {
     title: "星野リゾート",
     description: {
       ja: "大手ホテルチェーンの公式サイト。宿泊予約・空室検索や多数のブランド・施設を扱う大規模な情報設計の実装を担当しました。",
@@ -674,9 +663,6 @@ export default function Projects() {
   return (
     <section id="projects" className="border-t border-white/10 bg-navy py-20 md:py-28 lg:py-36">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p className="mb-2 font-mono text-sm text-white/50">
-          {t.projects.eyebrow}
-        </p>
         <h2 className="text-2xl font-bold text-white sm:text-3xl">{t.projects.title}</h2>
 
         {/* バナー画像（リストの前）。明るすぎないよう半透明に。 */}

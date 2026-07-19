@@ -9,7 +9,6 @@ export default function About() {
   return (
     <section id="about" className="border-t border-white/10 bg-navy py-20 md:py-28 lg:py-36">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p className="mb-2 font-mono text-sm text-white/50">{t.about.eyebrow}</p>
         <h2 className="text-2xl font-bold text-white sm:text-3xl">{t.about.title}</h2>
         <div className="mt-8 grid gap-8 md:gap-12 lg:grid-cols-[1.4fr_1fr]">
           {/* 左：自己紹介文 */}

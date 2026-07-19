@@ -11,11 +11,10 @@ export default function Navbar() {
 
   // アバターの左右に振り分けるナビ項目（デスクトップ）
   const leftLinks = [
-    { label: t.nav.experience, href: "#experience" }, // 経験
+    { label: t.nav.about, href: "#about" }, // 紹介
     { label: t.nav.projects, href: "#projects" }, // 構築したサイト
   ];
   const rightLinks = [
-    { label: t.nav.about, href: "#about" }, // 紹介
     { label: t.nav.contact, href: "#contact" }, // 連携
   ];
   // モバイルのメニューは全項目をまとめて表示
