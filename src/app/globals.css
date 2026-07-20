@@ -19,3 +19,111 @@ body {
 section[id] {
   scroll-margin-top: 6.5rem;
 }
+
+/* =========================================================================
+   ライトモード（data-theme="light"）
+   既存コンポーネントは常時ダーク前提（bg-navy / text-white / *-white/xx）で
+   書かれているため、各コンポーネントを書き換えず、ライト時にこれらの
+   ユーティリティの見た目だけを CSS で上書きして反転させる。
+   ========================================================================= */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* 背景（セクション本体 / トップバー） */
+:root[data-theme="light"] body {
+  background-color: #f4f6fb;
+  color: #0a0a1a;
+}
+/* セクション本体は要素セレクタ＋!important で確実に上書き（.bg-navy に負けないように） */
+:root[data-theme="light"] section.bg-navy,
+:root[data-theme="light"] footer.bg-navy {
+  background-color: #f4f6fb !important;
+}
+:root[data-theme="light"] .bg-navy {
+  background-color: #f4f6fb !important;
+}
+/* Hero は背景動画の下地。ライトでも動画が薄く映るので下地は白系に */
+:root[data-theme="light"] section.bg-navy.overflow-hidden {
+  background-color: #eef1f8 !important;
+}
+:root[data-theme="light"] .bg-navy-bar\/\[\.19\] {
+  background-color: rgb(10 30 85 / 0.06) !important;
+}
+:root[data-theme="light"] .bg-navy-bar {
+  background-color: #ffffff !important;
+}
+
+/* テキスト：白 → 濃紺（不透明度は近い値を維持） */
+:root[data-theme="light"] .text-white {
+  color: #0a0a1a !important;
+}
+:root[data-theme="light"] .text-white\/80 {
+  color: rgb(10 10 26 / 0.8) !important;
+}
+:root[data-theme="light"] .text-white\/70 {
+  color: rgb(10 10 26 / 0.72) !important;
+}
+:root[data-theme="light"] .text-white\/60 {
+  color: rgb(10 10 26 / 0.62) !important;
+}
+:root[data-theme="light"] .text-white\/50 {
+  color: rgb(10 10 26 / 0.55) !important;
+}
+:root[data-theme="light"] .text-white\/40 {
+  color: rgb(10 10 26 / 0.45) !important;
+}
+
+/* ボーダー：白系 → 濃紺系 */
+:root[data-theme="light"] .border-white {
+  border-color: rgb(10 10 26 / 0.85) !important;
+}
+:root[data-theme="light"] .border-white\/60 {
+  border-color: rgb(10 10 26 / 0.4) !important;
+}
+:root[data-theme="light"] .border-white\/50 {
+  border-color: rgb(10 10 26 / 0.35) !important;
+}
+:root[data-theme="light"] .border-white\/40 {
+  border-color: rgb(10 10 26 / 0.3) !important;
+}
+:root[data-theme="light"] .border-white\/30 {
+  border-color: rgb(10 10 26 / 0.25) !important;
+}
+:root[data-theme="light"] .border-white\/25 {
+  border-color: rgb(10 10 26 / 0.2) !important;
+}
+:root[data-theme="light"] .border-white\/20 {
+  border-color: rgb(10 10 26 / 0.18) !important;
+}
+:root[data-theme="light"] .border-white\/15 {
+  border-color: rgb(10 10 26 / 0.14) !important;
+}
+:root[data-theme="light"] .border-white\/10 {
+  border-color: rgb(10 10 26 / 0.1) !important;
+}
+
+/* カード等の白い半透明面 → 濃紺の薄い面（コントラスト確保） */
+:root[data-theme="light"] .bg-white\/5 {
+  background-color: rgb(10 30 85 / 0.05) !important;
+}
+:root[data-theme="light"] .bg-white\/10 {
+  background-color: rgb(10 30 85 / 0.08) !important;
+}
+:root[data-theme="light"] .bg-white\/\[0\.03\] {
+  background-color: rgb(10 30 85 / 0.04) !important;
+}
+:root[data-theme="light"] .bg-white\/\[0\.06\] {
+  background-color: rgb(10 30 85 / 0.06) !important;
+}
+
+/* Hero / CTA など「白背景・濃紺文字」のボタンは、ライトでは濃紺背景・白文字に反転 */
+:root[data-theme="light"] .bg-white {
+  background-color: #0a1e55 !important;
+}
+:root[data-theme="light"] .bg-white .text-navy,
+:root[data-theme="light"] .text-navy {
+  color: #ffffff !important;
+}
+
+/* トップバーのアバター縁・区切り線は白のままだと浮くので少しだけ調整済み（上記 border 上書きでカバー） */

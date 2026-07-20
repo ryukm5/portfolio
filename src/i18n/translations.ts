@@ -8,8 +8,10 @@ export type Language = "ja" | "en";
 export type Translation = {
   brand: string;
   nav: {
+    home: string;
     about: string;
     projects: string;
+    viewProjects: string;
     experience: string;
     contact: string;
     getInTouch: string;
@@ -47,6 +49,18 @@ export type Translation = {
     email: string;
     line: string;
     chatwork: string;
+    // Email モーダル
+    formTitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    detailsLabel: string;
+    detailsPlaceholder: string;
+    send: string;
+    cancel: string;
+    // LINE モーダル
+    lineTitle: string;
+    lineDesc: string;
+    close: string;
   };
   footer: {
     builtWith: string;
@@ -56,12 +70,14 @@ export type Translation = {
 export const translations: Record<Language, Translation> = {
   ja: {
     // トップバー / 名前
-    brand: "your.name",
+    brand: "龍夏",
     nav: {
-      about: "紹介",
+      home: "Home",
+      about: "About",
       projects: "構築したサイト",
+      viewProjects: "View Projects",
       experience: "経験",
-      contact: "連携",
+      contact: "Contact",
       getInTouch: "お問い合わせ",
     },
     // Hero
@@ -109,6 +125,16 @@ export const translations: Record<Language, Translation> = {
       email: "メール",
       line: "LINE",
       chatwork: "Chatwork",
+      formTitle: "メールでのお問い合わせ",
+      nameLabel: "お名前",
+      namePlaceholder: "山田 太郎",
+      detailsLabel: "ご依頼内容",
+      detailsPlaceholder: "ご依頼の詳細をご記入ください。",
+      send: "送信",
+      cancel: "キャンセル",
+      lineTitle: "LINEで友だち追加",
+      lineDesc: "スマートフォンのLINEアプリでQRコードを読み取ってください。",
+      close: "閉じる",
     },
     // Footer
     footer: {
@@ -118,10 +144,12 @@ export const translations: Record<Language, Translation> = {
 
   en: {
     // Top bar / name
-    brand: "your.name",
+    brand: "Ryuka",
     nav: {
+      home: "Home",
       about: "About",
       projects: "Projects",
+      viewProjects: "View Projects",
       experience: "Experience",
       contact: "Contact",
       getInTouch: "Get in touch",
@@ -172,6 +200,16 @@ export const translations: Record<Language, Translation> = {
       email: "Email",
       line: "LINE",
       chatwork: "Chatwork",
+      formTitle: "Contact by email",
+      nameLabel: "Name",
+      namePlaceholder: "Your name",
+      detailsLabel: "Request details",
+      detailsPlaceholder: "Please describe your request.",
+      send: "Send",
+      cancel: "Cancel",
+      lineTitle: "Add on LINE",
+      lineDesc: "Scan the QR code with the LINE app on your smartphone.",
+      close: "Close",
     },
     // Footer
     footer: {

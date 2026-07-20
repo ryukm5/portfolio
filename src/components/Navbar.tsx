@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const { t } = useLanguage();
@@ -11,11 +12,12 @@ export default function Navbar() {
 
   // アバターの左右に振り分けるナビ項目（デスクトップ）
   const leftLinks = [
-    { label: t.nav.about, href: "#about" }, // 紹介
-    { label: t.nav.projects, href: "#projects" }, // 構築したサイト
+    { label: t.nav.home, href: "#top" }, // Home
+    { label: t.nav.about, href: "#about" }, // About
   ];
   const rightLinks = [
-    { label: t.nav.contact, href: "#contact" }, // 連携
+    { label: t.nav.viewProjects, href: "#projects" }, // View Projects
+    { label: t.nav.contact, href: "#contact" }, // Contact
   ];
   // モバイルのメニューは全項目をまとめて表示
   const allLinks = [...leftLinks, ...rightLinks];
@@ -60,10 +62,17 @@ export default function Navbar() {
             </a>
           </div>
 
+          {/* 最左端：昼/夜モード切替ボタン（PCのみ、バーの左端に固定） */}
+          <div className="pointer-events-none absolute left-3 top-1/2 z-20 hidden -translate-y-1/2 lg:block">
+            <div className="pointer-events-auto">
+              <ThemeToggle />
+            </div>
+          </div>
+
           {/* ===== PC (lg 以上)：左右にナビ、右端に言語ボタン ===== */}
           <nav className="mx-auto hidden h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-8 lg:grid">
-            {/* 左グループ：経験・構築したサイト */}
-            <ul className="flex items-center justify-end gap-24 pr-10 sm:pr-14">
+            {/* 左グループ：Home・About */}
+            <ul className="flex items-center justify-end gap-10 pl-12 pr-10 sm:pr-14">
               {leftLinks.map((link) => (
                 <li key={link.href}>
                   <a
@@ -79,9 +88,9 @@ export default function Navbar() {
             {/* 中央：アバター用スペース */}
             <div className="w-16 sm:w-20" aria-hidden />
 
-            {/* 右グループ：紹介・連携　＋　右端に言語トグル */}
+            {/* 右グループ：View Projects・Contact　＋　右端に言語トグル */}
             <div className="flex items-center justify-between gap-6 pl-10 sm:pl-14">
-              <ul className="flex items-center gap-24">
+              <ul className="flex items-center gap-10">
                 {rightLinks.map((link) => (
                   <li key={link.href}>
                     <a
@@ -98,20 +107,23 @@ export default function Navbar() {
             </div>
           </nav>
 
-          {/* ===== タブレット/モバイル (lg 未満)：ハンバーガー｜アバター｜言語ボタン ===== */}
-          <div className="flex h-16 items-center justify-between px-5 lg:hidden">
-            {/* ハンバーガー */}
-            <button
-              type="button"
-              aria-label="Toggle menu"
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
-              className="flex flex-col gap-1.5 p-1"
-            >
-              <span className="block h-0.5 w-6 bg-white" />
-              <span className="block h-0.5 w-6 bg-white" />
-              <span className="block h-0.5 w-6 bg-white" />
-            </button>
+          {/* ===== タブレット/モバイル (lg 未満)：モード｜ハンバーガー｜アバター｜言語ボタン ===== */}
+          <div className="flex h-16 items-center justify-between px-4 lg:hidden">
+            {/* 左：モード切替＋ハンバーガー */}
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                type="button"
+                aria-label="Toggle menu"
+                aria-expanded={open}
+                onClick={() => setOpen((v) => !v)}
+                className="flex flex-col gap-1.5 p-1"
+              >
+                <span className="block h-0.5 w-6 bg-white" />
+                <span className="block h-0.5 w-6 bg-white" />
+                <span className="block h-0.5 w-6 bg-white" />
+              </button>
+            </div>
 
             {/* 中央のアバター用スペース */}
             <div className="w-12" aria-hidden />
