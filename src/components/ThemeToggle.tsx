@@ -5,26 +5,34 @@ import { useEffect, useState } from "react";
 const STORAGE_KEY = "portfolio-theme";
 type Theme = "dark" | "light";
 
-// 昼/夜モード切替ボタン（太陽=ライト/月=ダーク）。
-// 選択は localStorage に保存し、<html> に data-theme を付与する。
-// ※ ライト配色の完全対応は後回し。まずは切替の仕組みとボタンを用意。
+// 昼/夜モード切替ボタン。
+// ※ 現在は無効化中（常にダーク固定）。ボタンを非表示にしている。
+//    ライト配色の CSS・仕組みは残しているので、下の `DISABLED` を false に
+//    すればボタンが再表示され、切替が復活する。
+const DISABLED = true;
+
 export default function ThemeToggle({ className = "" }: { className?: string }) {
   const [theme, setTheme] = useState<Theme>("dark");
 
   // 初回：保存済みテーマを復元
   useEffect(() => {
+    if (DISABLED) return;
     const saved = window.localStorage.getItem(STORAGE_KEY);
     if (saved === "dark" || saved === "light") setTheme(saved);
   }, []);
 
   // テーマ変更時：保存し <html data-theme> を更新
   useEffect(() => {
+    if (DISABLED) return;
     window.localStorage.setItem(STORAGE_KEY, theme);
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   const toggle = () => setTheme((v) => (v === "dark" ? "light" : "dark"));
   const next = theme === "dark" ? "light" : "dark";
+
+  // 無効化中はボタンを表示しない
+  if (DISABLED) return null;
 
   return (
     <button

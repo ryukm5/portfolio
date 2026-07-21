@@ -72,12 +72,12 @@ export const translations: Record<Language, Translation> = {
     // トップバー / 名前
     brand: "龍夏",
     nav: {
-      home: "Home",
-      about: "About",
+      home: "ホーム",
+      about: "紹介",
       projects: "構築したサイト",
-      viewProjects: "View Projects",
+      viewProjects: "構築したサイト",
       experience: "経験",
-      contact: "Contact",
+      contact: "連携",
       getInTouch: "お問い合わせ",
     },
     // Hero

@@ -14,12 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
+    // data-theme はペイント前スクリプトが付与するため、
+    // サーバー描画とクライアントで属性が異なる。意図的なので警告を抑止する。
+    <html lang="ja" suppressHydrationWarning>
       <head>
-        {/* ペイント前にテーマを適用（チラつき防止・確実な反映） */}
+        {/* テーマ切替は現在無効化中。常にダーク固定にするため、
+            過去に保存された light 設定が残っていても data-theme を付けない。 */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();`,
+            __html: `(function(){try{document.documentElement.removeAttribute('data-theme');}catch(e){}})();`,
           }}
         />
       </head>
